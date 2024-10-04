@@ -16,12 +16,13 @@ export default function getAllNotificationsByUser(userId) {
   const messages = normalized.entities.messages;
 
   for (const id in notifications) {
-    if (notifications[id].author === userId) {
+    if(notifications[id].author === userId) {
       output.push(messages[notifications[id].context]);
     }
   }
 
   return output;
+  //return notificationData.filter((notification) => notification.author.id === userId).map((notification) => notification.context);
 }
 
 export { normalized };

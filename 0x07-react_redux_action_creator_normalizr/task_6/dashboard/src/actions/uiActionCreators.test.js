@@ -1,31 +1,32 @@
+import { login, logout, displayNotificationDrawer, hideNotificationDrawer } from "./uiActionCreators";
 import { LOGIN, LOGOUT, DISPLAY_NOTIFICATION_DRAWER, HIDE_NOTIFICATION_DRAWER } from "./uiActionTypes";
 
-import { login, logout, hideNotificationDrawer, displayNotificationDrawer } from "./uiActionCreators";
+describe('uiActionCreators', () => {
+    it('should return the type and user object', () => {
+        const email = "test@gmail.com";
+        const password = 100200;
 
-describe("tests for UI notification action creators", () => {
-  it("should create proper action for login", () => {
-    const email = "james@gmail.com";
-    const password = "heheheh";
-
-    expect(login(email, password)).toEqual({
-      type: LOGIN,
-      user: { email: "james@gmail.com", password: "heheheh" },
+        expect(login(email, password)).toEqual({
+            type: LOGIN,
+            user: { email: "test@gmail.com", password: 100200},
+        });
     });
-  });
 
-  it("should create proper action for logout", () => {
-    expect(logout()).toEqual({ type: LOGOUT });
-  });
-
-  it("should create proper action for displaying notification drawer", () => {
-    expect(displayNotificationDrawer()).toEqual({
-      type: DISPLAY_NOTIFICATION_DRAWER,
+    it("should return the correct logout type", () => {
+        expect(logout()).toEqual({
+            type: LOGOUT
+        });
     });
-  });
 
-  it("should create proper action for hiding notification drawer", () => {
-    expect(hideNotificationDrawer()).toEqual({
-      type: HIDE_NOTIFICATION_DRAWER,
+    it("displayNotificationDrawer should return the correc type", () => {
+        expect(displayNotificationDrawer()).toEqual({
+            type: DISPLAY_NOTIFICATION_DRAWER
+        });
     });
-  });
-});
+
+    it("hideNotificationDrawer should return the correct type", () => {
+        expect(hideNotificationDrawer()).toEqual({
+            type: HIDE_NOTIFICATION_DRAWER
+        })
+    })
+})
